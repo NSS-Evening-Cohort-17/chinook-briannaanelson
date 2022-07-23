@@ -1,2 +1,11 @@
-SELECT SUM(Total) FROM Invoice
-WHERE InvoiceDate BETWEEN '2009-01-01 00:00:00' AND '2011-12-31 00:00:00';
+SELECT DISTINCT (
+        SELECT SUM(Total) 
+        FROM Invoice
+        WHERE InvoiceDate LIKE "2009%"
+        ) as Sales_Total_2009,
+        (SELECT SUM(TOTAL)
+        FROM Invoice
+        WHERE InvoiceDate LIKE "2011%"
+        ) as SALES_Total_2011
+
+
